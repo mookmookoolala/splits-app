@@ -4,6 +4,11 @@ Splits is a full-stack expense-sharing application for tracking group spending,
 settling balances and keeping a shared activity history. It is built as an
 installable PWA with a React client, an Express API and PostgreSQL persistence.
 
+> **Repository note:** Splits was originally developed in a private repository.
+> This is a sanitized, fully working public release created for demonstration
+> and open-source use. Private deployment configuration, infrastructure details
+> and production data are intentionally excluded.
+
 ## Highlights
 
 - Create groups, invite members and split expenses
