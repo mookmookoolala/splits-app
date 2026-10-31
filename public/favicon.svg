@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#dbeafe" />
+    </linearGradient>
+  </defs>
+
+  <!-- Blue Background Squircle -->
+  <rect x="32" y="32" width="448" height="448" rx="128" fill="url(#blueGrad)"/>
+
+  <!-- Percentage % Split Icon -->
+  <line x1="340" y1="140" x2="172" y2="372" stroke="url(#accentGrad)" stroke-width="48" stroke-linecap="round"/>
+  <circle cx="192" cy="182" r="44" stroke="white" stroke-width="34" fill="none"/>
+  <circle cx="320" cy="330" r="44" stroke="white" stroke-width="34" fill="none"/>
+</svg>

@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String     @id
+  name              String
+  email             String?    @unique
+  password          String
+  avatar            String?
+  paynowHandle      String?
+  preferredCurrency String?    @default("S$")
+  notificationEmail Boolean    @default(true)
+  notificationPush  Boolean    @default(true)
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  friends           Friend[]   @relation("OwnerFriends")
+  activities        Activity[]
+}
+
+model Friend {
+  id           String   @id
+  ownerId      String?
+  linkedUserId String?
+  name         String
+  email        String?
+  avatar       String?
+  isVirtual    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  owner        User?    @relation("OwnerFriends", fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@index([ownerId])
+}
+
+model Group {
+  id          String   @id
+  name        String
+  type        String
+  currency    String   @default("$")
+  createdById String?
+  memberIds   Json
+  adminIds    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([createdById])
+}
+
+model Expense {
+  id          String   @id
+  description String
+  amount      Float
+  paidBy      String
+  date        String
+  category    String
+  kind        String   @default("expense")
+  status      String   @default("confirmed")
+  splitWith   Json
+  groupId     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([groupId])
+  @@index([paidBy])
+  @@index([date])
+}
+
+model Activity {
+  id          String   @id
+  type        String
+  description String
+  amount      Float?
+  date        String
+  userId      String
+  groupId     String?
+  status      String   @default("confirmed")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([groupId])
+  @@index([date])
+}

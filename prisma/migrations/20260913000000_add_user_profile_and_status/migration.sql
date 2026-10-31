@@ -1,0 +1,11 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN IF NOT EXISTS "paynowHandle" TEXT;
+ALTER TABLE "User" ADD COLUMN IF NOT EXISTS "preferredCurrency" TEXT DEFAULT 'S$';
+ALTER TABLE "User" ADD COLUMN IF NOT EXISTS "notificationEmail" BOOLEAN NOT NULL DEFAULT true;
+ALTER TABLE "User" ADD COLUMN IF NOT EXISTS "notificationPush" BOOLEAN NOT NULL DEFAULT true;
+
+-- AlterTable
+ALTER TABLE "Expense" ADD COLUMN IF NOT EXISTS "status" TEXT NOT NULL DEFAULT 'confirmed';
+
+-- AlterTable
+ALTER TABLE "Activity" ADD COLUMN IF NOT EXISTS "status" TEXT NOT NULL DEFAULT 'confirmed';
